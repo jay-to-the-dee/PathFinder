@@ -44,11 +44,9 @@ public class QueueJTable
     {
         private final String[] columnNames =
         {
-            "Explored", "X", "Y", "Parent X", "Parent Y", "g(n)", "h(n)", "f(n)"
+            "#", "Explored", "X", "Y", "Parent X", "Parent Y", "g(n)", "h(n)", "f(n)"
         };
 
-        
-        
         @Override
         public int getRowCount()
         {
@@ -74,20 +72,22 @@ public class QueueJTable
             switch (columnIndex)
             {
                 case 0:
-                    return node.isExplored();
+                    return rowIndex + 1;
                 case 1:
-                    return node.getNodeCost().getXPosition();
+                    return node.isExplored();
                 case 2:
-                    return node.getNodeCost().getYPosition();
+                    return node.getNodeCost().getXPosition();
                 case 3:
-                    return node.getParentX();
+                    return node.getNodeCost().getYPosition();
                 case 4:
-                    return node.getParentY();
+                    return node.getParentX();
                 case 5:
-                    return node.getNodeCost().getG();
+                    return node.getParentY();
                 case 6:
-                    return node.getNodeCost().getH();
+                    return node.getNodeCost().getG();
                 case 7:
+                    return node.getNodeCost().getH();
+                case 8:
                     return node.getNodeCost().getF();
                 default:
                     return "";
@@ -100,15 +100,17 @@ public class QueueJTable
             switch (c)
             {
                 case 0:
-                    return Boolean.class;
+                    return Integer.class;
                 case 1:
+                    return Boolean.class;
                 case 2:
                 case 3:
                 case 4:
-                    return Integer.class;
                 case 5:
+                    return Integer.class;
                 case 6:
                 case 7:
+                case 8:
                     return Double.class;
                 default:
                     return Object.class;

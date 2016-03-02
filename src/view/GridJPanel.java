@@ -51,15 +51,15 @@ class GridJPanel extends JPanel
 
         GridObject[][] gridArray = grid.convertToXYGridObjectArray();
 
-        for (int y = 1; y <= grid.height; y++)
+        for (int y = grid.height; y >= 1; y--)
         {
             for (int x = 1; x <= grid.width; x++)
             {
                 g.setColor(gridArray[x][y].getColor());
-                g.fillRect((x - 1) * objectWidth, (y - 1) * objectHeight, objectWidth, objectHeight);
+                g.fillRect((x - 1) * objectWidth, (grid.width-y) * objectHeight, objectWidth, objectHeight);
 
                 g.setColor(Color.black);
-                g.drawRect((x - 1) * objectWidth, (y - 1) * objectHeight, objectWidth, objectHeight);
+                g.drawRect((x - 1) * objectWidth, (grid.width-y) * objectHeight, objectWidth, objectHeight);
             }
         }
     }

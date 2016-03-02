@@ -16,8 +16,8 @@
  */
 package view;
 
-import controller.*;
-import model.*;
+import controller.Queue;
+import model.Grid;
 
 /**
  * This is the main class that sets up a grid and returns the result of a search
@@ -42,7 +42,7 @@ public class PathFinder
         grid.addObstacle(6, 6);
         grid.addObstacle(6, 7);
 
-        System.out.print(grid.toString());
+        //System.out.print(grid.toString());
 
         //System.out.println(new Expander(grid, 5, 5, 0).doExpand());
         Queue queue = new Queue(grid);
