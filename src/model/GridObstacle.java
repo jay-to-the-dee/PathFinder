@@ -16,6 +16,8 @@
  */
 package model;
 
+import java.awt.Color;
+
 /**
  *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
@@ -31,5 +33,11 @@ public class GridObstacle extends GridObject
     public int toInt()
     {
         return -1;
+    }
+
+    @Override
+    public Color getColor()
+    {
+        return Color.RED;
     }
 }

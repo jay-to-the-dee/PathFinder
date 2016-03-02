@@ -32,7 +32,7 @@ public class Queue
     private double pathCost;
 
     //Not really part of the data structure - for convinience
-    int startX, startY, targetX, targetY;
+    private int startX, startY, targetX, targetY;
 
     public Queue(Grid grid)
     {
@@ -55,6 +55,11 @@ public class Queue
         queue.add(initialQueueNode);
     }
 
+    public ArrayList<QueueNode> getQueue()
+    {
+        return queue;
+    }
+    
     @Override
     /**
      * This will produce the current queue contents

@@ -21,6 +21,7 @@ import model.*;
 
 /**
  * This is the main class that sets up a grid and returns the result of a search
+ *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class PathFinder
@@ -34,26 +35,22 @@ public class PathFinder
 
         grid.setStartintPoint(4, 5);
         grid.setTarget(7, 5);
-        
+
         grid.addObstacle(6, 3);
         grid.addObstacle(6, 4);
         grid.addObstacle(6, 5);
         grid.addObstacle(6, 6);
         grid.addObstacle(6, 7);
 
-
-        
-
         System.out.print(grid.toString());
 
         //System.out.println(new Expander(grid, 5, 5, 0).doExpand());
-        
         Queue queue = new Queue(grid);
-        queue.doSearch();
-        
-        System.out.print(queue.toString());
+
+        GUI gui = new GUI(grid, queue);
+
+        //System.out.print(queue.toString());
+        //System.out.print(grid.toString());
     }
 
-    
-    
 }

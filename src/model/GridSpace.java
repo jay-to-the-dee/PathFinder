@@ -16,6 +16,8 @@
  */
 package model;
 
+import java.awt.Color;
+
 /**
  *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
@@ -31,5 +33,11 @@ class GridSpace extends GridObject
     public int toInt()
     {
         return 2;
+    }
+
+    @Override
+    public Color getColor()
+    {
+        return Color.WHITE;
     }
 }

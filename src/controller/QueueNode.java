@@ -20,7 +20,7 @@ package controller;
  * This is a node to go on the Queue object in the Queue class
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
-class QueueNode
+public class QueueNode
 {
     private boolean explored;
     private int parentX;
@@ -71,7 +71,7 @@ class QueueNode
     @Override
     public String toString()
     {
-        return "QueueNode{"
+        return "QueueNode\t"
                 + "explored=" + explored
                 + ", X=" + nodeCost.getXPosition()
                 + ", Y=" + nodeCost.getYPosition()
@@ -80,7 +80,7 @@ class QueueNode
                 + ", g(n)=" + nodeCost.getG()
                 + ", h(n)=" + nodeCost.getH()
                 + ", f(n)=" + nodeCost.getF()
-                + '}';
+                + ' ';
     }
 
 }

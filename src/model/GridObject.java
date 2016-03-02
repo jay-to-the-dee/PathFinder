@@ -16,8 +16,11 @@
  */
 package model;
 
+import java.awt.Color;
+
 /**
- * Abstart class that hold all object types to be stored within the grid
+ * Abstract class that hold all object types to be stored within the grid
+ *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public abstract class GridObject
@@ -32,6 +35,7 @@ public abstract class GridObject
     }
 
     abstract public int toInt();
+    abstract public Color getColor();
 
     public int getX()
     {
