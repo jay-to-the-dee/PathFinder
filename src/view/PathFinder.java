@@ -20,7 +20,7 @@ import controller.*;
 import model.*;
 
 /**
- *
+ * This is the main class that sets up a grid and returns the result of a search
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class PathFinder

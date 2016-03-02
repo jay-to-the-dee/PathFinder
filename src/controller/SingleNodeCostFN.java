@@ -17,7 +17,7 @@
 package controller;
 
 /**
- *
+ * This class stores and returns the costing for a node exploration
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class SingleNodeCostFN

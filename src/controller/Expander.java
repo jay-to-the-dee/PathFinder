@@ -20,7 +20,8 @@ import java.util.*;
 import model.Grid;
 
 /**
- *
+ * This class expands a node, by exploring the surrounding nodes and finding
+ * the cost involved.
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Expander

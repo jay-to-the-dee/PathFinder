@@ -17,7 +17,7 @@
 package controller;
 
 /**
- *
+ * This is a node to go on the Queue object in the Queue class
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 class QueueNode

@@ -19,7 +19,7 @@ package model;
 import java.util.*;
 
 /**
- *
+ * Stores all the required data for the space represented in a grid shape
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Grid

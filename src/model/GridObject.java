@@ -17,7 +17,7 @@
 package model;
 
 /**
- *
+ * Abstart class that hold all object types to be stored within the grid
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public abstract class GridObject

@@ -20,7 +20,7 @@ import java.util.*;
 import model.Grid;
 
 /**
- *
+ * This class stores and manages the search queue
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Queue
