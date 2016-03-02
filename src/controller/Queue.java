@@ -21,6 +21,7 @@ import model.Grid;
 
 /**
  * This class stores and manages the search queue
+ *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Queue
@@ -61,9 +62,10 @@ public class Queue
     public String toString()
     {
         String buffer = "";
+        int i = 0;
         for (QueueNode queueNode : queue)
         {
-            buffer += queueNode + "\n";
+            buffer += ++i + "\t" + queueNode + "\n";
         }
         return buffer;
     }
@@ -74,7 +76,7 @@ public class Queue
         int currentY = startY;
         boolean flag;
 
-        while ((currentX != targetX || currentY != targetY) && pathExists == true)
+        while (!(currentX == targetX && currentY == targetY) && pathExists == true)
         {
             Set<SingleNodeCostFN> expandedNodes = new Expander(grid, currentX, currentY, pathCost).doExpand();
             for (SingleNodeCostFN exp : expandedNodes)
@@ -96,13 +98,42 @@ public class Queue
                 if (flag == false)
                 {
                     queue.add(new QueueNode(currentX, currentY, exp));
-                    pathExists=false;
                 }
             }
-            
-            
-            
-            
+            QueueNode minimumNode = getMinimumQueueNode();
+            if (minimumNode != null)
+            {
+                currentX = minimumNode.getNodeCost().getXPosition();
+                currentY = minimumNode.getNodeCost().getYPosition();
+                pathCost = minimumNode.getNodeCost().getG();
+
+                //Add current node to obstacles
+                //TODO: Make different type of machine generated obstacle object later
+                grid.addObstacle(currentX, currentY);
+                minimumNode.markExplored(); //Mark explored
+            }
+            else
+            {
+                pathExists = false;
+            }
         }
+    }
+
+    private QueueNode getMinimumQueueNode()
+    {
+        QueueNode runningSmallestNode = null;
+
+        for (QueueNode currentQueueNode : queue)
+        {
+            if (!currentQueueNode.isExplored())
+            {
+                if (runningSmallestNode == null || currentQueueNode.getNodeCost().getF() < runningSmallestNode.getNodeCost().getF())
+                {
+                    runningSmallestNode = currentQueueNode;
+                }
+            }
+        }
+
+        return runningSmallestNode;
     }
 }
