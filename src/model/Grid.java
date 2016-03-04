@@ -99,6 +99,10 @@ public class Grid
 
     public boolean isAnObstacle(int sX, int sY)
     {
+        if (sX == startingPoint.getX() && sY == startingPoint.getY())
+        {
+            return true;
+        }
         for (GridObstacle obstacle : obstacles)
         {
             if (obstacle.getX() == sX && obstacle.getY() == sY)
