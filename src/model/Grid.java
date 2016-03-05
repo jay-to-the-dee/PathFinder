@@ -20,6 +20,7 @@ import java.util.*;
 
 /**
  * Stores all the required data for the space represented in a grid shape
+ *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Grid
@@ -77,6 +78,18 @@ public class Grid
         }
     }
 
+    public void addObstacleGenerated(int x, int y)
+    {
+        if (!isOutOfBounds(x, y))
+        {
+            this.obstacles.add(new GridObstacleGenerated(x, y));
+        }
+        else
+        {
+            throw new OutOfBoundsException(x, y);
+        }
+    }
+
     public final void clearObstacles()
     {
         obstacles = new HashSet<>();
@@ -127,13 +140,13 @@ public class Grid
         {
             objectGrid[startingPoint.getX()][startingPoint.getY()] = startingPoint;
         }
-        if (target != null)
-        {
-            objectGrid[target.getX()][target.getY()] = target;
-        }
         for (GridObstacle obstacle : obstacles)
         {
             objectGrid[obstacle.getX()][obstacle.getY()] = obstacle;
+        }
+        if (target != null)
+        {
+            objectGrid[target.getX()][target.getY()] = target;
         }
 
         // Fill the remainder of the grid in with (temporary) GridSpace objects

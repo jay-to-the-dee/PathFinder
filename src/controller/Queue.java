@@ -114,7 +114,7 @@ public class Queue
 
                 //Add current node to obstacles
                 //TODO: Make different type of machine generated obstacle object later
-                grid.addObstacle(currentX, currentY);
+                grid.addObstacleGenerated(currentX, currentY);
                 minimumNode.markExplored(); //Mark explored
             }
             else
