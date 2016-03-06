@@ -115,13 +115,13 @@ public class Queue
                 pathCost = minimumNode.getNodeCost().getG();
 
                 //Add current node to obstacles
-                //TODO: Make different type of machine generated obstacle object later
                 grid.addObstacleGenerated(currentX, currentY);
                 minimumNode.markExplored(); //Mark explored
             }
             else
             {
                 pathExists = false;
+                searchComplete = true; //Just because there was no path didn't mean we didn't complete the search!
             }
             //Check before next loop whether we have completed the search or not
             if (currentX == targetX && currentY == targetY)
