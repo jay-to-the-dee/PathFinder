@@ -32,12 +32,35 @@ public class QueueJTable
     public QueueJTable(Queue queue)
     {
         table = new JTable(new QueueTableModel());
+        initColumnSizes();
         this.queue = queue;
     }
 
     public JTable getTable()
     {
         return table;
+    }
+
+    private void initColumnSizes()
+    {
+        final int BASEWIDTH = 50;
+
+        for (int i = 0; i < table.getColumnCount(); i++)
+        {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            if (i == 0)
+            {
+                column.setPreferredWidth(BASEWIDTH);
+            }
+            else if (i < 6)
+            {
+                column.setPreferredWidth(BASEWIDTH * 2);
+            }
+            else
+            {
+                column.setPreferredWidth(BASEWIDTH * 4);
+            }
+        }
     }
 
     private class QueueTableModel extends AbstractTableModel

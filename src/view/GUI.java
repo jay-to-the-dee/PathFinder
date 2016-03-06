@@ -31,6 +31,11 @@ public class GUI extends JFrame
     private final Grid grid;
     private final controller.Queue queue;
 
+    private JScrollPane scrollPane;
+    private JTable queueJTable;
+    private JPanel gridJPanel;
+    private JPanel buttonControls;
+
     public GUI(Grid grid, Queue queue)
     {
         super("PathFinder GUI");
@@ -42,23 +47,24 @@ public class GUI extends JFrame
 
         addStuff(this.getContentPane());
 
+        this.setPreferredSize(new Dimension(1280, 1040));
         this.pack();
         this.setVisible(true);
     }
 
     private void addStuff(Container contentPane)
     {
-        JTable queueJTable = new QueueJTable(queue).getTable();
-        JScrollPane scrollPane = new JScrollPane(queueJTable);
+        queueJTable = new QueueJTable(queue).getTable();
+        scrollPane = new JScrollPane(queueJTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         queueJTable.setFillsViewportHeight(true);
 
-        JPanel gridJPanel = new GridJPanel(grid);
+        gridJPanel = new GridJPanel(grid);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 gridJPanel, scrollPane);
 
         contentPane.add(splitPane, BorderLayout.CENTER);
-        
-        JPanel buttonControls = getButtons();
+
+        buttonControls = getButtons();
         contentPane.add(buttonControls, BorderLayout.SOUTH);
     }
 
@@ -68,12 +74,27 @@ public class GUI extends JFrame
         newButtons.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         JButton doSearchButton = new JButton("Start Search");
-        doSearchButton.addActionListener(new ActionListener() {
+        doSearchButton.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                queue.doSearch();
-                repaint();
+                new SwingWorker<Void, Void>()
+                {
+                    @Override
+                    protected Void doInBackground() throws Exception
+                    {
+                        queue.doSearch();
+                        return null;
+                    }
+
+                    @Override
+                    public void done()
+                    {
+                        repaint();
+                        queueJTable.revalidate();
+                    }
+                }.execute();
             }
         });
         newButtons.add(doSearchButton);

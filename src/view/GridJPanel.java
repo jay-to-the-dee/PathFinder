@@ -37,7 +37,7 @@ class GridJPanel extends JPanel
     @Override
     public Dimension getPreferredSize()
     {
-        return new Dimension(200, 200);
+        return new Dimension(500, 500);
     }
 
     @Override
