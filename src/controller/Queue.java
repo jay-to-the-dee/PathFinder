@@ -50,7 +50,7 @@ public class Queue
 
         SingleNodeCostFN initialNodeCost = new SingleNodeCostFN(startX, startY);
         initialNodeCost.setG(pathCost); //Will be 0 here
-        initialNodeCost.setH(Expander.distance(startX, startY, targetX, targetY));
+        initialNodeCost.setH(HeuristicFunction.h1(startX, startY, targetX, targetY));
         QueueNode initialQueueNode = new QueueNode(startX, startY, initialNodeCost);
         initialQueueNode.markExplored();
         queue.add(initialQueueNode);

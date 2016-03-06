@@ -22,6 +22,7 @@ import model.Grid;
 /**
  * This class expands a node, by exploring the surrounding nodes and finding
  * the cost involved.
+ *
  * @author jay-to-the-dee <jay-to-the-dee@users.noreply.github.com>
  */
 public class Expander
@@ -77,20 +78,9 @@ public class Expander
 
         SingleNodeCostFN node = new SingleNodeCostFN(sX, sY);
 
-        node.setG(pathCostHN + distance(xNode, yNode, sX, sY));
-        node.setH(distance(grid.getTarget().getX(), grid.getTarget().getY(), sX, sY));
+        node.setG(pathCostHN + HeuristicFunction.euclidianDistance(xNode, yNode, sX, sY));
+        node.setH(HeuristicFunction.h1(grid.getTarget().getX(), grid.getTarget().getY(), sX, sY));
 
         return node;
-    }
-
-    /**
-     * Our heuristic distance function
-     * @return h1(n)
-     */
-    public static double distance(int x1, int y1, int x2, int y2)
-    {
-        double xDiffSqr = Math.pow((x1 - x2), 2);
-        double yDiffSqr = Math.pow((y1 - y2), 2);
-        return Math.sqrt(xDiffSqr + yDiffSqr);
     }
 }
