@@ -33,6 +33,7 @@ public class Queue
 
     //Not really part of the data structure - for convinience
     private int startX, startY, targetX, targetY;
+    private boolean searchComplete;
 
     public Queue(Grid grid)
     {
@@ -81,7 +82,7 @@ public class Queue
         int currentY = startY;
         boolean flag;
 
-        while (!(currentX == targetX && currentY == targetY) && pathExists == true)
+        while (searchComplete == false && pathExists == true)
         {
             Set<SingleNodeCostFN> expandedNodes = new Expander(grid, currentX, currentY, pathCost).doExpand();
             for (SingleNodeCostFN exp : expandedNodes)
@@ -105,7 +106,7 @@ public class Queue
                     queue.add(new QueueNode(currentX, currentY, exp));
                 }
             }
-            
+
             QueueNode minimumNode = getMinimumQueueNode();
             if (minimumNode != null)
             {
@@ -121,6 +122,11 @@ public class Queue
             else
             {
                 pathExists = false;
+            }
+            //Check before next loop whether we have completed the search or not
+            if (currentX == targetX && currentY == targetY)
+            {
+                searchComplete = true;
             }
         }
     }
