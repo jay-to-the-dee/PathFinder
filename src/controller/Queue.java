@@ -59,7 +59,7 @@ public class Queue
     {
         return queue;
     }
-    
+
     @Override
     /**
      * This will produce the current queue contents
@@ -92,12 +92,12 @@ public class Queue
                     if (exp.getXPosition() == currentQueueNode.getNodeCost().getXPosition()
                             && exp.getYPosition() == currentQueueNode.getNodeCost().getYPosition())
                     {
-                        //This should be ensuring the minimum cost - survives in the queue
+                        //This is ensuring the minimum cost - survives in the queue
                         if (currentQueueNode.getNodeCost().getF() >= exp.getF())
                         {
                             currentQueueNode.update(currentX, currentY, exp.getG(), exp.getH());
-                            flag = true;
                         }
+                        flag = true;
                     }
                 }
                 if (flag == false)
@@ -105,6 +105,7 @@ public class Queue
                     queue.add(new QueueNode(currentX, currentY, exp));
                 }
             }
+            
             QueueNode minimumNode = getMinimumQueueNode();
             if (minimumNode != null)
             {
